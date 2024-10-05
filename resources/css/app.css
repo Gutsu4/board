@@ -1,3 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    html {
+        font-family: 'Inter', sans-serif;
+    }
+
+    h1 {
+        @apply text-24;
+        @apply font-bold;
+    }
+
+    h2 {
+        @apply font-bold;
+    }
+
+    h3 {
+        @apply font-bold;
+    }
+
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+}
+
+@layer components {
+
+    .input {
+        padding-left: 1rem;
+        border: 1px solid #EEEEEE;
+        background-color: #F5F5F5;
+        border-radius: 6px;
+        width: 544px;
+        height: 46px;
+    }
+
+    .input::placeholder {
+        color: #969696;
+    }
+
+    .input-error {
+        @apply border-danger;
+        @apply bg-danger-pale;
+    }
+
+    .hide {
+        text-align: right;
+        font-size: 12px;
+        vertical-align: top;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .select-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        width: 8px;
+        height: 8px;
+        border-right: 3px solid #000000;
+        border-bottom: 3px solid #000000;
+        transform: rotate(45deg);
+    }
+
+    .background {
+        background-color: white;
+        border-radius: 6px;
+        box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.2);
+        margin: 0 auto;
+    }
+
+    .span {
+        display: inline-block;
+        height: 49px;
+        line-height: 49px;
+        overflow: visible;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+@layer utilities {
+    .text-10 {
+        font-size: 10px;
+    }
+
+    .text-12 {
+        font-size: 12px;
+    }
+
+    .text-14 {
+        font-size: 14px;
+    }
+
+    .text-16 {
+        font-size: 16px;
+    }
+
+    .text-24 {
+        font-size: 24px;
+    }
+
+    .text-32 {
+        font-size: 32px;
+    }
+
+    .shadow-default {
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+}
