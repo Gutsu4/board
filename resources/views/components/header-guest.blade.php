@@ -2,10 +2,10 @@
     <a href="" class="h-full">
         <img class="lg:pr-4 h-full" src="{{ asset('images/board-logo.PNG') }}" alt="Logo">
     </a>
-    <h1 class="mr-auto">匿名質問版</h1>
+    <h1 class="mr-auto text-16 lg:text-24">匿名質問版</h1>
     <div class="flex gap-2 md:gap-3 items-center">
         <button class="text-14 md:text-16 text-gray-dark font-bold border border-gray rounded-md px-2.5 py-2"
-                onclick="window.location=''"
+                onclick="window.location='{{route('login')}}'"
         >
             ログイン
         </button>

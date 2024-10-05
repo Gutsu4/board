@@ -6,10 +6,10 @@
             </p>
             <ol class="text-12 md:font-bold">
                 <li class="mb-1">
-                    <a href="">トップページ</a>
+                    <a href="{{route('home')}}">トップページ</a>
                 </li>
                 <li class="mb-1">
-                    <a href="">ログイン</a>
+                    <a href="{{route('login')}}">ログイン</a>
                 </li>
                 <li class="mb-1">
                     <a href="">お問い合わせ</a>

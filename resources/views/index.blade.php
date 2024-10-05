@@ -4,14 +4,21 @@
     <x-breadcrumb>ログイン</x-breadcrumb>
     <x-header-1>ログイン</x-header-1>
     <div class="pb-24">
-        <form action="" method="POST"
+        <form action="{{route('login')}}" method="POST"
               class="max-w-lg bg-white rounded-md shadow-default mx-4 lg:mx-auto">
             @csrf
             <div class="mx-auto py-10 px-6 lg:px-9 flex flex-col gap-6">
                 <div class="flex flex-col gap-2">
-                    <label for="email" class="font-bold text-14">教室</label>
-                    <x-form-input type="email" name="email" id="email" value="{{ old('email') }}" required/>
-                    <x-error-message :messages="$errors->all()"/>
+                    <label for="class_room" class="font-bold text-14">教室</label>
+                    <x-form-select name="class_room" id="class_room">
+                        <option value="" selected disabled class="text-gray-light">所属している教室を選択してください
+                        </option>
+                        @foreach($classRooms as $classRoom)
+                            <option value="{{ $classRoom->id }}">
+                                {{ $classRoom->name }}
+                            </option>
+                        @endforeach
+                    </x-form-select>
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="password" class="font-bold text-14">パスワード</label>
