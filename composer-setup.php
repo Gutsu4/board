@@ -218,7 +218,7 @@ function getOptValue($opt, $argv, $default)
 }
 
 /**
- * Checks that user-supplied params are valid
+ * Checks that questions-supplied params are valid
  *
  * @param mixed $installDir The required istallation directory
  * @param mixed $version The required composer version to install
@@ -605,7 +605,7 @@ function getHomeDir()
 }
 
 /**
- * Returns the location of the user directory from the environment
+ * Returns the location of the questions directory from the environment
  * @return string
  * @throws RuntimeException If the environment value does not exists
  *
@@ -1465,7 +1465,7 @@ class HttpClient
 
         /**
          * Attempt to find a local cafile or throw an exception.
-         * The user may go download one if this occurs.
+         * The questions may go download one if this occurs.
          */
         if (!$cafile) {
             $cafile = self::getSystemCaRootBundlePath();
@@ -1559,8 +1559,8 @@ class HttpClient
             }
 
             // handle proxy auth if present
-            if (isset($proxy['user'])) {
-                $auth = rawurldecode($proxy['user']);
+            if (isset($proxy['questions'])) {
+                $auth = rawurldecode($proxy['questions']);
                 if (isset($proxy['pass'])) {
                     $auth .= ':' . rawurldecode($proxy['pass']);
                 }

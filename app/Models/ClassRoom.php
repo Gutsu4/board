@@ -9,6 +9,5 @@ class ClassRoom extends Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'password'];
     protected $table = 'class_rooms';
 }
