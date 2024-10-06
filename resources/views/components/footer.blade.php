@@ -6,7 +6,7 @@
             </p>
             <ol class="text-12 md:font-bold">
                 <li class="mb-1">
-                    <a href="{{route('home')}}">トップページ</a>
+                    <a href="{{route('top')}}">トップページ</a>
                 </li>
                 <li class="mb-1">
                     <a href="{{route('login')}}">ログイン</a>

@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +13,16 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ClassRoomSeeder::class,
+            CategorySeeder::class,
+            CourseSeeder::class,
+            CategoryQuestionSeeder::class
         ]);
+
+        // 開発環境用のダミーデータを生成
+        if (app()->environment('local')) {
+            $this->call([
+                QuestionSeeder::class
+            ]);
+        }
     }
 }

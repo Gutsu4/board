@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,14 +15,10 @@ class LoginController extends Controller
         return view('index', compact('classRooms'));
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $credentials = $request->validate([
-            'class_room' => ['required'], // `id` を受け取る
-            'password' => ['required', 'string'],
-        ]);
+        $credentials = $request->validated(); // バリデートされたデータを取得
 
-        // `Auth::guard('classroom')` を使って認証
         if (Auth::guard('classroom')->attempt([
             'id' => $credentials['class_room'], // `id` を使う
             'password' => $credentials['password'],
@@ -33,7 +30,7 @@ class LoginController extends Controller
 
         // 認証失敗
         return back()->withErrors([
-            'password' => 'パスワードが間違っています。',
+            'password' => '認証に失敗しました。'
         ]);
     }
 }
