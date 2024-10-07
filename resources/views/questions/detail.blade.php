@@ -97,15 +97,14 @@
                                placeholder="回答者名"
                                value="{{ old('author_name') }}" {{ old('is_anonymous') ? 'disabled' : '' }}>
                     </div>
-
-                    <!-- 匿名投稿オプション -->
-                    <div>
-                        <label class="inline-flex items-center my-auto">
-                            <input type="checkbox" name="is_anonymous" id="is_anonymous"
-                                   class="border-gray-light rounded" {{ old('is_anonymous') ? 'checked' : '' }}>
-                            <span class="ml-2 text-gray-dark font-bold">匿名で回答する</span>
-                        </label>
-                    </div>
+                </div>
+                <!-- 匿名投稿オプション -->
+                <div>
+                    <label class="inline-flex items-center my-auto">
+                        <input type="checkbox" name="is_anonymous" id="is_anonymous"
+                               class="border-gray-light rounded" {{ old('is_anonymous') ? 'checked' : '' }}>
+                        <span class="ml-2 text-gray-dark font-bold">匿名で回答する</span>
+                    </label>
                 </div>
                 <!-- 匿名の場合は無効化 -->
                 @error('author_name')
