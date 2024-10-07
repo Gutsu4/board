@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionSearchController;
@@ -13,7 +14,9 @@ Route::get('/questions', [QuestionController::class, 'index'])->name('question.i
 Route::get('/questions/create', [QuestionController::class, 'create'])->name('question.create');
 Route::post('/questions', [QuestionController::class, 'store'])->name('question.store');
 Route::get('/questions/complete', [QuestionController::class, 'complete'])->name('question.complete');
-Route::get('/questions/{question}/edit', [QuestionController::class, 'edit'])->name('question.edit');
-Route::get('/questions/{question}/delete', [QuestionController::class, 'delete'])->name('question.delete');
 Route::get('/questions/search', [QuestionSearchController::class, 'showSearchForm'])->name('question.search');
 Route::get('/questions/detail/{question}', [QuestionController::class, 'detail'])->name('question.detail');
+Route::post('/questions/answer', [AnswerController::class, 'store'])->name('answer.store');
+
+Route::patch('/questions/{question}/like', [QuestionController::class, 'like'])->name('question.like');
+Route::patch('/answers/{answer}/like', [AnswerController::class, 'like'])->name('answer.like');

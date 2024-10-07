@@ -15,7 +15,7 @@ class QuestionSearchController extends Controller
         $query = Question::query();
 
         // カテゴリーで絞り込み
-        if ($request->filled('category')) {
+        if ($request->filled('category.blade.php')) {
             $query->whereHas('categories', function ($q) use ($request) {
                 $q->where('categories.id', $request->category); // 'categories.id' を明示的に指定
             });
