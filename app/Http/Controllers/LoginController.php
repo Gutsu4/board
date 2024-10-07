@@ -22,15 +22,23 @@ class LoginController extends Controller
         if (Auth::guard('classroom')->attempt([
             'id' => $credentials['class_room'], // `id` を使う
             'password' => $credentials['password'],
-        ], $request->filled('remember'))) {
+        ], $credentials['remember'] ?? false)) {
             // 認証成功
             $request->session()->regenerate();
-            return redirect()->route('top');
+            return redirect()->route('question.index');
         }
 
         // 認証失敗
         return back()->withErrors([
             'password' => '認証に失敗しました。'
         ]);
+    }
+
+    function logout(Request $request)
+    {
+        Auth::guard('classroom')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login');
     }
 }

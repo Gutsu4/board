@@ -7,7 +7,7 @@ export default defineConfig({
         host: '0.0.0.0', // 全てのネットワークインターフェースからのアクセスを許可
         port: 5173, // 任意のポート番号
         hmr: {
-            host: 'localhost', // MacのローカルIPアドレス
+            host: '192.168.1.5', // MacのローカルIPアドレス
             port: 5173, // 任意のポート番号
         },
     },

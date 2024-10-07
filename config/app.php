@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,11 +78,11 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('APP_LOCALE', 'ja'),
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+    'faker_locale' => env('APP_FAKER_LOCALE', 'ja_JP'),
 
     /*
     |--------------------------------------------------------------------------
@@ -122,5 +122,20 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Pagination View
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which pagination view should be used to render
+    | the links for your application's paginators. You are free to set
+    | this value to any view given as per your application's needs.
+    |
+    | Supported: "tailwind", "bootstrap", "simple-bootstrap"
+    |
+    */
+
+    'pagination' => 'tailwind',
 
 ];

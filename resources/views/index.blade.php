@@ -2,7 +2,7 @@
 @extends('layouts.app')
 @section('content')
     <x-breadcrumb>ログイン</x-breadcrumb>
-    <x-header-1>ログイン</x-header-1>
+    <h1 class="text-center mb-2 mt-7 lg:mt-0　lg:mb-7">ログイン</h1>
     <div class="pb-24">
         <form action="{{route('login')}}" method="POST"
               class="max-w-lg bg-white rounded-md shadow-default mx-4 lg:mx-auto">

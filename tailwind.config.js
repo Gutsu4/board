@@ -25,7 +25,7 @@ module.exports = {
                     natural: '#F8F8F8'
                 },
 
-                danger: {
+                red: {
                     pale: '#FDD1D1',
                     DEFAULT: '#F52929',
                     soft: '#DC3545'
