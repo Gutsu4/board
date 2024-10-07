@@ -11,8 +11,8 @@
         <div class="bg-white shadow-default rounded-lg p-6 lg:p-8">
             <!-- タイトルと投稿日時 -->
             <div class="flex justify-between items-center">
-                <h2 class="text-blue font-black text-24">{{ $question->title }}</h2>
-                <p class="text-gray-soft text-12">{{ $question->created_at->format('Y-m-d H:i') }}</p>
+                <h2 class="text-blue font-black text-18 lg:text-24">{{ $question->title }}</h2>
+                <p class="text-gray-soft text-12 lg:text-16">{{ $question->created_at->format('Y-m-d H:i') }}</p>
             </div>
 
             <!-- 投稿内容 -->
@@ -31,7 +31,7 @@
                 @if($question->categories->isNotEmpty())
                     <span>|</span>
                     @foreach($question->categories as $category)
-                        <span class="px-2 py-1 text-12 lg:text-14 font-light bg-gray-verypale text-gray-dark rounded">
+                        <span class="px-2 py-1 text-14 lg:text-18 font-light bg-gray-verypale text-gray-dark rounded">
                             {{ $category->name }}
                         </span>
                     @endforeach
