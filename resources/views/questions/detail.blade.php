@@ -49,7 +49,7 @@
                 </p>
             </div>
 
-            <!-- 役に立った・回答ボタン -->
+            <!-- いいね・回答ボタン -->
             <div class="flex gap-4 mt-6">
                 <form action="{{ route('question.like', $question->id) }}" method="POST" class="inline">
                     @csrf
@@ -64,7 +64,7 @@
                             <path
                                 d="M15.99 20l4.197 -4.223a2.81 2.81 0 0 0 0 -3.948a2.747 2.747 0 0 0 -3.91 -.007l-.28 .282l-.279 -.283a2.747 2.747 0 0 0 -3.91 -.007a2.81 2.81 0 0 0 -.007 3.948l4.182 4.238z"/>
                         </svg>
-                        役に立った<span class="like-count ml-2">{{ $question->likes_count }}</span>
+                        いいね<span class="like-count ml-2">{{ $question->likes_count }}</span>
                     </button>
                 </form>
             </div>
@@ -153,7 +153,7 @@
                                     <path
                                         d="M15.99 20l4.197 -4.223a2.81 2.81 0 0 0 0 -3.948a2.747 2.747 0 0 0 -3.91 -.007l-.28 .282l-.279 -.283a2.747 2.747 0 0 0 -3.91 -.007a2.81 2.81 0 0 0 -.007 3.948l4.182 4.238z"/>
                                 </svg>
-                                役に立った<span class="like-count">{{ $answer->likes_count }}</span>
+                                いいね<span class="like-count">{{ $answer->likes_count }}</span>
                             </button>
                         </form>
                     </div>
