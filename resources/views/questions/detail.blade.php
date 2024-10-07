@@ -11,8 +11,8 @@
         <div class="bg-white shadow-default rounded-lg p-6 lg:p-8">
             <!-- タイトルと投稿日時 -->
             <div class="flex justify-between items-center">
-                <h2 class="text-blue font-black text-24">{{ $question->title }}</h2>
-                <p class="text-gray-soft text-12">{{ $question->created_at->format('Y-m-d H:i') }}</p>
+                <h2 class="text-blue font-black text-18 lg:text-24">{{ $question->title }}</h2>
+                <p class="text-gray-soft text-12 lg:text-16">{{ $question->created_at->format('Y-m-d H:i') }}</p>
             </div>
 
             <!-- 投稿内容 -->
@@ -31,7 +31,7 @@
                 @if($question->categories->isNotEmpty())
                     <span>|</span>
                     @foreach($question->categories as $category)
-                        <span class="px-2 py-1 text-12 lg:text-14 font-light bg-gray-verypale text-gray-dark rounded">
+                        <span class="px-2 py-1 text-14 lg:text-18 font-light bg-gray-verypale text-gray-dark rounded">
                             {{ $category->name }}
                         </span>
                     @endforeach
@@ -49,7 +49,7 @@
                 </p>
             </div>
 
-            <!-- 役に立った・回答ボタン -->
+            <!-- いいね・回答ボタン -->
             <div class="flex gap-4 mt-6">
                 <form action="{{ route('question.like', $question->id) }}" method="POST" class="inline">
                     @csrf
@@ -64,7 +64,7 @@
                             <path
                                 d="M15.99 20l4.197 -4.223a2.81 2.81 0 0 0 0 -3.948a2.747 2.747 0 0 0 -3.91 -.007l-.28 .282l-.279 -.283a2.747 2.747 0 0 0 -3.91 -.007a2.81 2.81 0 0 0 -.007 3.948l4.182 4.238z"/>
                         </svg>
-                        役に立った<span class="like-count ml-2">{{ $question->likes_count }}</span>
+                        いいね<span class="like-count ml-2">{{ $question->likes_count }}</span>
                     </button>
                 </form>
             </div>
@@ -97,15 +97,14 @@
                                placeholder="回答者名"
                                value="{{ old('author_name') }}" {{ old('is_anonymous') ? 'disabled' : '' }}>
                     </div>
-
-                    <!-- 匿名投稿オプション -->
-                    <div>
-                        <label class="inline-flex items-center my-auto">
-                            <input type="checkbox" name="is_anonymous" id="is_anonymous"
-                                   class="border-gray-light rounded" {{ old('is_anonymous') ? 'checked' : '' }}>
-                            <span class="ml-2 text-gray-dark font-bold">匿名で回答する</span>
-                        </label>
-                    </div>
+                </div>
+                <!-- 匿名投稿オプション -->
+                <div>
+                    <label class="inline-flex items-center my-auto">
+                        <input type="checkbox" name="is_anonymous" id="is_anonymous"
+                               class="border-gray-light rounded" {{ old('is_anonymous') ? 'checked' : '' }}>
+                        <span class="ml-2 text-gray-dark font-bold">匿名で回答する</span>
+                    </label>
                 </div>
                 <!-- 匿名の場合は無効化 -->
                 @error('author_name')
@@ -153,7 +152,7 @@
                                     <path
                                         d="M15.99 20l4.197 -4.223a2.81 2.81 0 0 0 0 -3.948a2.747 2.747 0 0 0 -3.91 -.007l-.28 .282l-.279 -.283a2.747 2.747 0 0 0 -3.91 -.007a2.81 2.81 0 0 0 -.007 3.948l4.182 4.238z"/>
                                 </svg>
-                                役に立った<span class="like-count">{{ $answer->likes_count }}</span>
+                                いいね<span class="like-count">{{ $answer->likes_count }}</span>
                             </button>
                         </form>
                     </div>

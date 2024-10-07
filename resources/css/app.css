@@ -44,6 +44,11 @@
         height: 46px;
     }
 
+    input[type="date"] {
+        background-color: #fff; /* 背景を白に設定 */
+        color: #000; /* テキストの色も適宜調整 */
+    }
+
     .input::placeholder {
         color: #969696;
     }

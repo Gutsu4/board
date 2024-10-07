@@ -52,7 +52,7 @@
                 <div class="flex justify-between items-center">
                     <!-- タイトル -->
                     <a href="{{ route('question.detail', [$question->id]) }}"
-                       class="text-blue font-black text-14 lg:text-18 line-clamp-1">
+                       class="text-blue font-black text-18 lg:text-24 line-clamp-1">
                         {{ $question->title }}
                     </a>
                     <!-- 投稿日時 -->
@@ -60,7 +60,7 @@
                 </div>
 
                 <!-- 投稿内容のプレビュー -->
-                <p class="text-gray-dark text-12 lg:text-14 line-clamp-3">
+                <p class="text-gray-dark text-14 lg:text-16 line-clamp-3">
                     {{ Str::limit($question->content, 100) }}
                 </p>
 
@@ -89,21 +89,21 @@
                     @endif
                 </p>
 
-                <!-- 役に立った・回答ボタン -->
-                <div class="flex items-center mt-4 gap-6 text-gray-500">
-                    <!-- 役に立ったボタン -->
+                <!-- いいね・回答ボタン -->
+                <div class="flex items-center mt-4 gap-6 text-gray-500 text-12 lg:text-14">
+                    <!-- いいねボタン -->
                     <div class="flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="icon icon-tabler icons-tabler-outline icon-tabler-hearts">
+                             class="icon icon-tabler icons-tabler-outline icon-tabler-hearts w-6 h-6 lg:w-8 lg:h-8">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M14.017 18l-2.017 2l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 0 1 8.153 5.784"/>
                             <path
                                 d="M15.99 20l4.197 -4.223a2.81 2.81 0 0 0 0 -3.948a2.747 2.747 0 0 0 -3.91 -.007l-.28 .282l-.279 -.283a2.747 2.747 0 0 0 -3.91 -.007a2.81 2.81 0 0 0 -.007 3.948l4.182 4.238z"/>
                         </svg>
-                        <span>役に立った</span>
-                        <span class="like-count ml-1">{{ $question->likes_count }}</span>
+                            <span>いいね</span>
+                            <span class="like-count ml-1">{{ $question->likes_count }}</span>
                     </div>
 
                     <!-- 回答ボタン -->
@@ -111,7 +111,7 @@
                        class="flex items-center gap-2 hover:text-blue">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="icon icon-tabler icons-tabler-outline icon-tabler-message-plus">
+                             class="icon icon-tabler icons-tabler-outline icon-tabler-message-plus w-6 h-6 lg:w-8 lg:h-8">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M8 9h8"/>
                             <path d="M8 13h6"/>

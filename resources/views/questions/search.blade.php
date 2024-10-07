@@ -135,9 +135,9 @@
                                     @endif
                                 </p>
 
-                                <!-- 役に立った・回答ボタン -->
+                                <!-- いいね・回答ボタン -->
                                 <div class="flex items-center gap-6 mt-4">
-                                    <!-- 役に立ったボタン -->
+                                    <!-- いいねボタン -->
                                     <form action="{{ route('question.like', $question->id) }}" method="POST">
                                         @csrf
                                         @method('PATCH')
@@ -154,7 +154,7 @@
                                                 <path
                                                     d="M15.99 20l4.197 -4.223a2.81 2.81 0 0 0 0 -3.948a2.747 2.747 0 0 0 -3.91 -.007l-.28 .282l-.279 -.283a2.747 2.747 0 0 0 -3.91 -.007a2.81 2.81 0 0 0 -.007 3.948l4.182 4.238z"/>
                                             </svg>
-                                            <span>役に立った</span>
+                                            <span>いいね</span>
                                             <span class="like-count ml-1">{{ $question->likes_count }}</span>
                                         </button>
                                     </form>
