@@ -13,7 +13,7 @@
             class="text-14 md:text-16 text-white font-bold border border-gradient-to-r bg-gradient-to-r from-[#0097DF] to-[#015FDB] rounded-md px-2.5 md:px-8 py-2.5"
             onclick="window.location='https://app.slack.com/client/T02EJDCD7FA/C06AK9H46LR'"
         >
-            Slackへ
+            Slackへ問い合わせ
         </button>
     </div>
 </nav>
