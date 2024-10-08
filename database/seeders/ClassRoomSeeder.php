@@ -34,7 +34,7 @@ class ClassRoomSeeder extends Seeder
             '町田',
             '川崎',
             '横浜',
-            '横浜桜木町',
+            '桜木町',
             'たまプラーザ',
             '大宮',
             '津田沼',
