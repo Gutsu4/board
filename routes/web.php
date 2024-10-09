@@ -6,9 +6,10 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionSearchController;
 use Illuminate\Support\Facades\Route;
 
-// ログインとログアウトは認証が必要ないので外部に出す
-Route::get('/', [LoginController::class, 'index'])->name('login.index');
-Route::post('/', [LoginController::class, 'login'])->name('login');
+Route::middleware(\App\Http\Middleware\RedirectIfAuthenticated::class)->group(function () {
+    Route::get('/', [LoginController::class, 'index'])->name('login.index');
+    Route::post('/', [LoginController::class, 'login'])->name('login');
+});
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 // 認証が必要なルートをグループ化
