@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
-use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,34 +9,34 @@ class LoginController extends Controller
 {
     public function index()
     {
-        $classRooms = ClassRoom::all();
-        return view('index', compact('classRooms'));
-    }
-
-    public function login(LoginRequest $request)
-    {
-        $credentials = $request->validated(); // バリデートされたデータを取得
-
-        if (Auth::guard('classroom')->attempt([
-            'id' => $credentials['class_room'], // `id` を使う
-            'password' => $credentials['password'],
-        ], $credentials['remember'] ?? false)) {
-            // 認証成功
-            $request->session()->regenerate();
+        // もし認証済みであれば、/questions へリダイレクト
+        if (Auth::check()) {
             return redirect()->route('question.index');
         }
 
-        // 認証失敗
+        return route('login.index');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/questions');
+        }
+
         return back()->withErrors([
-            'password' => '認証に失敗しました。'
+            'email' => 'The provided credentials do not match our records.',
         ]);
     }
 
-    function logout(Request $request)
+    public function logout(Request $request)
     {
-        Auth::guard('classroom')->logout();
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+
+        return redirect()->route('login.index');
     }
 }
