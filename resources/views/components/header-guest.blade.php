@@ -1,6 +1,6 @@
 <nav class="flex justify-between items-center h-14 md:h-16 bg-white px-2 md:px-4">
     <a href="" class="h-full">
-        <img class="lg:pr-4 h-full" src="{{ asset('images/board-logo.PNG') }}" alt="Logo">
+        <img class="lg:pr-4 h-full" src="{{ asset('images/board-logo.png') }}" alt="Logo">
     </a>
     <h1 class="mr-auto text-16 lg:text-24">匿名質問版</h1>
     <div class="flex gap-2 md:gap-3 items-center">
