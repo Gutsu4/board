@@ -11,14 +11,13 @@ class AnswerController extends Controller
     public function store(AnswerRequest $request)
     {
         $validated = $request->validated();
-
         // 新規回答作成
         $answer = new Answer();
         $answer->question_id = $validated['question_id'];
         $answer->content = $validated['content'];
 
         // チェックボックスの値をtrue/falseに変換
-        $answer->is_anonymous = $request->has('is_anonymous');
+        $answer->is_anonymous = (bool)$request->input('is_anonymous', false);
 
         // 匿名の場合はauthor_nameをnullに設定
         if ($answer->is_anonymous) {

@@ -15,6 +15,17 @@ class QuestionRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation()
+    {
+        // チェックボックスの値をbooleanに変換
+        $this->merge([
+            'is_anonymous' => $this->boolean('is_anonymous'),
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -27,9 +38,8 @@ class QuestionRequest extends FormRequest
             'categories.*' => 'exists:categories,id',
             'course' => 'required|exists:courses,id',
             'content' => 'required|string',
-            // 'nullable' を追加して匿名の場合はバリデーションをスキップ
             'author_name' => 'nullable|required_if:is_anonymous,false|string|max:255',
-            'is_anonymous' => 'nullable|in:on,1,false', // チェックボックスの可能な値に対応
+            'is_anonymous' => 'boolean', // boolean として扱う
         ];
     }
 
@@ -54,7 +64,7 @@ class QuestionRequest extends FormRequest
             'author_name.string' => '投稿者名は文字列で入力してください。',
             'author_name.max' => '投稿者名は最大255文字まで入力可能です。',
 
-            'is_anonymous.in' => '匿名オプションは有効な値で指定してください。',
+            'is_anonymous.boolean' => '匿名オプションは有効な値で指定してください。',
         ];
     }
 }

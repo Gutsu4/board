@@ -85,7 +85,7 @@ class QuestionController extends Controller
         $question->classroom_id = auth()->id();
 
         // チェックボックスの値を true/false に変換
-        $question->is_anonymous = $request->has('is_anonymous');
+        $question->is_anonymous = (bool)$request->input('is_anonymous', false);
 
         // 匿名の場合は author_name を null に設定
         if ($question->is_anonymous) {
