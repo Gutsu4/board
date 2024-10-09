@@ -1,7 +1,7 @@
 <nav class="flex justify-between items-center h-14 lg:h-16 bg-white px-2 lg:px-4 shadow-md">
     <!-- ロゴ -->
     <a href="{{ route('question.index') }}" class="h-full flex items-center">
-        <img class="h-full p-2 lg:p-0" src="{{ asset('images/board-logo.PNG') }}" alt="Logo">
+        <img class="h-full p-2 lg:p-0" src="{{ asset('images/board-logo.png') }}" alt="Logo">
     </a>
 
     <!-- サイトタイトル -->
