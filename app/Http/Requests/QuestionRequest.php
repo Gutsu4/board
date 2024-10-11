@@ -34,7 +34,7 @@ class QuestionRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'categories' => 'required|array',
+            'categories' => 'required|array|max:2',
             'categories.*' => 'exists:categories,id',
             'course' => 'required|exists:courses,id',
             'content' => 'required|string',
@@ -53,6 +53,7 @@ class QuestionRequest extends FormRequest
             'categories.required' => 'カテゴリーを選択してください。',
             'categories.array' => 'カテゴリーは配列で選択してください。',
             'categories.*.exists' => '選択したカテゴリーは存在しません。',
+            'categories.max' => 'カテゴリーは最大2つまで選択可能です。',
 
             'course.required' => 'コースを選択してください。',
             'course.exists' => '選択したコースは存在しません。',
