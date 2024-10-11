@@ -1,4 +1,4 @@
-<nav class="flex justify-between items-center h-14 md:h-16 bg-white px-2 md:px-4">
+<nav class="flex justify-between items-center h-14 bg-white px-2">
     <a href="" class="h-full">
         <img class="lg:pr-4 h-full" src="{{ asset('images/board-logo.png') }}" alt="Logo">
     </a>
