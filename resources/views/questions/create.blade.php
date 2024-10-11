@@ -41,10 +41,11 @@
                 </div>
 
                 <!-- コース選択 -->
-                <div>
+                <div class="mb-4">
                     <label for="course" class="block text-gray-dark font-bold mb-2">コース</label>
-                    <select name="course" id="course" class="w-full border border-gray-light rounded px-3 py-2">
-                        <option value="">コースを選択</option>
+                    <select name="course" id="course"
+                            class="w-full border border-gray-light rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="" disabled selected>コースを選択</option>
                         @foreach($courses as $course)
                             <option value="{{ $course->id }}" {{ old('course') == $course->id ? 'selected' : '' }}>
                                 {{ $course->name }}
@@ -106,8 +107,8 @@
             </p>
             <div class="flex justify-end gap-4">
                 <button type="button" id="cancel-button" class="px-4 py-2 bg-gray-pale rounded">キャンセル</button>
-                <button type="submit" form="post-form" class="px-4 py-2 bg-primary text-white rounded">投稿する
-                </button>
+                <x-button-primary type="submit" form="post-form" class="px-4 py-2 bg-primary text-white rounded-md">投稿する
+                </x-button-primary>
             </div>
         </dialog>
     </div>

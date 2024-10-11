@@ -1,7 +1,7 @@
 <nav class="flex justify-between items-center h-14 lg:h-16 bg-white px-2 lg:px-4 shadow-md">
     <!-- ロゴ -->
     <a href="{{ route('question.index') }}" class="h-full flex items-center">
-        <img class="h-full p-2 lg:p-0" src="{{ asset('images/board-logo.png') }}" alt="Logo">
+        <img class="h-full pr-0 lg:pr-4" src="{{ asset('images/board-logo.png') }}" alt="Logo">
     </a>
 
     <!-- サイトタイトル -->
@@ -34,17 +34,20 @@
             <!-- プロフィールアイコン -->
             <div x-data="{ open: false }" class="relative">
                 <img
-                    @click="open = !open"
-                    class="w-10 h-10 rounded-full border border-gray-dark cursor-pointer"
-                    src="{{ asset('images/icon-default.png') }}"
-                    alt="プロフィール画像"
+                        @click="open = !open"
+                        class="w-10 h-10 rounded-full border border-gray-dark cursor-pointer"
+                        src="{{ asset('images/icon-default.png') }}"
+                        alt="プロフィール画像"
                 >
                 <!-- ドロップダウンメニュー -->
                 <div
-                    x-show="open"
-                    @click.away="open = false"
-                    class="absolute right-0 mt-2 w-40 border border-gray-soft shadow-lg bg-white rounded z-50">
+                        x-show="open"
+                        @click.away="open = false"
+                        class="absolute right-0 mt-2 w-40 border border-gray-soft shadow-lg bg-white rounded z-50">
                     <ol class="py-2">
+                        <li class="text-16 font-bold text-gray-dark px-3 py-2 hover:bg-gray-verypale transition">
+                            <a href="{{ route('classroom.index',['classroom'=>auth()->id()]) }}">投稿管理</a>
+                        </li>
                         <li class="text-16 font-bold text-gray-dark px-3 py-2 hover:bg-gray-verypale transition">
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
@@ -77,6 +80,9 @@
                     </li>
                     <li class="text-16 font-bold text-gray-dark px-3 py-2 hover:bg-gray-verypale transition">
                         <a href="{{route('question.search')}}">投稿検索</a>
+                    </li>
+                    <li class="text-16 font-bold text-gray-dark px-3 py-2 hover:bg-gray-verypale transition">
+                        <a href="{{route('classroom.index',['classroom'=>auth()->id()])}}">投稿管理</a>
                     </li>
                     <li class="text-16 font-bold text-gray-dark px-3 py-2 hover:bg-gray-verypale transition">
                         <form action="{{ route('logout') }}" method="post">
