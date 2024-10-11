@@ -34,17 +34,20 @@
             <!-- プロフィールアイコン -->
             <div x-data="{ open: false }" class="relative">
                 <img
-                    @click="open = !open"
-                    class="w-10 h-10 rounded-full border border-gray-dark cursor-pointer"
-                    src="{{ asset('images/icon-default.png') }}"
-                    alt="プロフィール画像"
+                        @click="open = !open"
+                        class="w-10 h-10 rounded-full border border-gray-dark cursor-pointer"
+                        src="{{ asset('images/icon-default.png') }}"
+                        alt="プロフィール画像"
                 >
                 <!-- ドロップダウンメニュー -->
                 <div
-                    x-show="open"
-                    @click.away="open = false"
-                    class="absolute right-0 mt-2 w-40 border border-gray-soft shadow-lg bg-white rounded z-50">
+                        x-show="open"
+                        @click.away="open = false"
+                        class="absolute right-0 mt-2 w-40 border border-gray-soft shadow-lg bg-white rounded z-50">
                     <ol class="py-2">
+                        <li class="text-16 font-bold text-gray-dark px-3 py-2 hover:bg-gray-verypale transition">
+                            <a href="{{ route('classroom.index',['classroom'=>auth()->id()]) }}">投稿管理</a>
+                        </li>
                         <li class="text-16 font-bold text-gray-dark px-3 py-2 hover:bg-gray-verypale transition">
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
@@ -77,6 +80,9 @@
                     </li>
                     <li class="text-16 font-bold text-gray-dark px-3 py-2 hover:bg-gray-verypale transition">
                         <a href="{{route('question.search')}}">投稿検索</a>
+                    </li>
+                    <li class="text-16 font-bold text-gray-dark px-3 py-2 hover:bg-gray-verypale transition">
+                        <a href="{{route('classroom.index',['classroom'=>auth()->id()])}}">投稿管理</a>
                     </li>
                     <li class="text-16 font-bold text-gray-dark px-3 py-2 hover:bg-gray-verypale transition">
                         <form action="{{ route('logout') }}" method="post">

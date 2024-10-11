@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\ClassroomQuestionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionSearchController;
@@ -21,6 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/questions/search', [QuestionSearchController::class, 'showSearchForm'])->name('question.search');
     Route::get('/questions/detail/{question}', [QuestionController::class, 'detail'])->name('question.detail');
     Route::post('/questions/answer', [AnswerController::class, 'store'])->name('answer.store');
+    Route::get('/classroom/questions/{classroom}', [ClassroomQuestionController::class, 'index'])->name('classroom.index');
+    Route::delete('/classroom/questions/{question}', [ClassroomQuestionController::class, 'destroy'])->name('classroom.question.destroy');
 
     // いいね機能も認証が必要
     Route::patch('/questions/{question}/like', [QuestionController::class, 'like'])->name('question.like');
