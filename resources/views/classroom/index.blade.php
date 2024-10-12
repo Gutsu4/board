@@ -4,7 +4,7 @@
     <x-body header="{{ $classroom->name }}教室 投稿管理">
         <!-- 削除完了メッセージの表示 -->
         @if(session('success'))
-            <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
+            <div class="bg-green-light text-green-dark p-4 rounded mb-4">
                 {{ session('success') }}
             </div>
         @endif

@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AnswerRequest;
 use App\Http\Requests\QuestionRequest;
-use App\Models\Answer;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\Question;
@@ -78,8 +76,10 @@ class QuestionController extends Controller
     {
         $validated = $request->validated();
 
-        DB::transaction(function () use ($validated, $request) {
-            // 新規質問作成
+        // トランザクション開始
+        DB::beginTransaction();
+        try {
+            //新規質問作成
             $question = Question::create([
                 'title' => $validated['title'],
                 'content' => $validated['content'],
@@ -89,9 +89,12 @@ class QuestionController extends Controller
                 'author_name' => $request->input('is_anonymous') ? null : $validated['author_name']
             ]);
 
-            // カテゴリーのアタッチ
-            $question->categories()->attach($validated['categories']);
-        });
+            //カテゴリーのアタッチ
+            $question->categories()->attach($validated['categories'], ['created_at' => now(), 'updated_at' => now()]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('質問の登録に失敗しました。');
+        }
 
         return redirect()->route('question.complete');
     }
