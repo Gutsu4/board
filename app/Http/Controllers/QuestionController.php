@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Category;
 use App\Models\ClassRoom;
+use Illuminate\Support\Facades\DB;
 
 // Classroomモデルをインポート
 
@@ -77,27 +78,20 @@ class QuestionController extends Controller
     {
         $validated = $request->validated();
 
-        // 新規質問作成
-        $question = new Question();
-        $question->title = $validated['title'];
-        $question->content = $validated['content'];
-        $question->course_id = $validated['course'];
-        $question->classroom_id = auth()->id();
+        DB::transaction(function () use ($validated, $request) {
+            // 新規質問作成
+            $question = Question::create([
+                'title' => $validated['title'],
+                'content' => $validated['content'],
+                'course_id' => $validated['course'],
+                'classroom_id' => auth()->id(),
+                'is_anonymous' => (bool)$request->input('is_anonymous', false),
+                'author_name' => $request->input('is_anonymous') ? null : $validated['author_name']
+            ]);
 
-        // チェックボックスの値を true/false に変換
-        $question->is_anonymous = (bool)$request->input('is_anonymous', false);
-
-        // 匿名の場合は author_name を null に設定
-        if ($question->is_anonymous) {
-            $question->author_name = null;
-        } else {
-            $question->author_name = $validated['author_name'];
-        }
-
-        $question->save();
-
-        // カテゴリーのアタッチ
-        $question->categories()->attach($validated['categories']);
+            // カテゴリーのアタッチ
+            $question->categories()->attach($validated['categories']);
+        });
 
         return redirect()->route('question.complete');
     }
