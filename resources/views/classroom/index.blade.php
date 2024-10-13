@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '投稿管理')
 @section('content')
     <x-breadcrumb>投稿管理</x-breadcrumb>
     <x-body header="{{ $classroom->name }}教室 投稿管理">
