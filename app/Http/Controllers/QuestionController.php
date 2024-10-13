@@ -95,6 +95,7 @@ class QuestionController extends Controller
             DB::rollBack();
             return back()->withErrors('質問の登録に失敗しました。');
         }
+        DB::commit();
 
         return redirect()->route('question.complete');
     }
