@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '投稿一覧')
 @section('content')
     <x-breadcrumb>投稿一覧</x-breadcrumb>
     <x-body header="投稿一覧">
@@ -102,8 +103,8 @@
                             <path
                                 d="M15.99 20l4.197 -4.223a2.81 2.81 0 0 0 0 -3.948a2.747 2.747 0 0 0 -3.91 -.007l-.28 .282l-.279 -.283a2.747 2.747 0 0 0 -3.91 -.007a2.81 2.81 0 0 0 -.007 3.948l4.182 4.238z"/>
                         </svg>
-                            <span>いいね</span>
-                            <span class="like-count ml-1">{{ $question->likes_count }}</span>
+                        <span>いいね</span>
+                        <span class="like-count ml-1">{{ $question->likes_count }}</span>
                     </div>
 
                     <!-- 回答ボタン -->
